@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(lsof -ti:8080)"
-    ],
-    "deny": [],
-    "ask": []
-  }
-}
