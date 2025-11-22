@@ -1,0 +1,39 @@
+package templates
+
+import (
+	"fmt"
+	"github.com/blockfrost/blockfrost-go"
+	"time"
+)
+
+type Asset struct {
+	Unit     string
+	Quantity string
+}
+
+type AnalysisResult struct {
+	Addr string
+	Info []blockfrost.AddressTransactions
+}
+
+templ Results(result AnalysisResult) {
+	<div class="space-y-6 p-6 max-w-4xl mx-auto">
+		<div class="bg-white rounded-lg shadow border p-6">
+			<h1 class="text-xl font-bold mb-4">Address: { result.Addr }</h1>
+			for _, tx := range result.Info {
+				<div class="border rounded p-4 mb-4 bg-gray-50">
+					<div class="font-mono text-sm break-all">
+						<a href={ "https://preprod.cardanoscan.io/transaction/" + tx.TxHash } target="_blank" class="text-blue-600 hover:underline">
+							{ tx.TxHash }
+						</a>
+					</div>
+					<div class="text-xs text-gray-600 mt-2">
+						Block: { fmt.Sprintf("%d", tx.BlockHeight) } •
+						Tx Index: { fmt.Sprintf("%d", tx.TxIndex) } •
+						Time: { time.Unix(int64(tx.BlockTime), 0).Format("2006-01-02 15:04") }
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+}
