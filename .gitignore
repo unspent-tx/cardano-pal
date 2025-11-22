@@ -1,0 +1,33 @@
+# Go build artifacts
+/bin/
+/dist/
+/build/
+/cmd/**/app
+*.exe
+*.test
+*.out
+
+# Go modules cache (optional if using GOPATH; usually global)
+# /pkg/mod/
+
+# templ generated files
+*templ.go
+
+# Tailwind / tooling output
+node_modules/
+static/css/tailwind.css
+dist/assets/css/
+
+# Logs and runtime
+*.log
+tmp/
+*.cache
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
